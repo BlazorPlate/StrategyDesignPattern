@@ -4,67 +4,44 @@ namespace StrategyDesignPattern
 {
 
 
-    abstract class Strategy
+    public interface Strategy
 
     {
-        public abstract void SendNotification();
+        void SendNotification();
     }
 
-    /// <summary>
-
-    /// A 'ConcreteStrategy' class
-
-    /// </summary>
-
-    class NotifyByEmailStrategy : Strategy
+    public class NotifyByEmailStrategy : Strategy
 
     {
-        public override void SendNotification()
+        public void SendNotification()
         {
             Console.WriteLine(
               "Called NotifyByEmailStrategy.SendNotification()");
         }
     }
 
-    /// <summary>
 
-    /// A 'ConcreteStrategy' class
-
-    /// </summary>
-
-    class NotifyBySmsStrategy : Strategy
+    public class NotifyBySmsStrategy : Strategy
 
     {
-        public override void SendNotification()
+        public void SendNotification()
         {
             Console.WriteLine(
               "Called NotifyBySmsStrategy.SendNotification()");
         }
     }
 
-    /// <summary>
-
-    /// A 'ConcreteStrategy' class
-
-    /// </summary>
-
-    class NotifyByAlertStrategy : Strategy
+    public class NotifyByAlertStrategy : Strategy
 
     {
-        public override void SendNotification()
+        public void SendNotification()
         {
             Console.WriteLine(
               "Called NotifyByAlertStrategy.SendNotification()");
         }
     }
 
-    /// <summary>
-
-    /// The 'Context' class
-
-    /// </summary>
-
-    class Context
+    public class Context
 
     {
         private Strategy _strategy;
@@ -81,22 +58,10 @@ namespace StrategyDesignPattern
             _strategy.SendNotification();
         }
     }
-    /// <summary>
 
-    /// MainApp startup class for Structural
-
-    /// Strategy Design Pattern.
-
-    /// </summary>
-
-    class Program
+    public class Program
 
     {
-        /// <summary>
-
-        /// Entry point into console application.
-
-        /// </summary>
 
         static void Main()
         {
@@ -119,9 +84,4 @@ namespace StrategyDesignPattern
         }
     }
 
-    /// <summary>
-
-    /// The 'Strategy' abstract class
-
-    /// </summary>
 }
