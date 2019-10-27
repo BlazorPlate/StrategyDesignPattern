@@ -2,6 +2,85 @@
 
 namespace StrategyDesignPattern
 {
+
+
+    abstract class Strategy
+
+    {
+        public abstract void SendNotification();
+    }
+
+    /// <summary>
+
+    /// A 'ConcreteStrategy' class
+
+    /// </summary>
+
+    class NotifyByEmailStrategy : Strategy
+
+    {
+        public override void SendNotification()
+        {
+            Console.WriteLine(
+              "Called NotifyByEmailStrategy.SendNotification()");
+        }
+    }
+
+    /// <summary>
+
+    /// A 'ConcreteStrategy' class
+
+    /// </summary>
+
+    class NotifyBySmsStrategy : Strategy
+
+    {
+        public override void SendNotification()
+        {
+            Console.WriteLine(
+              "Called NotifyBySmsStrategy.SendNotification()");
+        }
+    }
+
+    /// <summary>
+
+    /// A 'ConcreteStrategy' class
+
+    /// </summary>
+
+    class NotifyByAlertStrategy : Strategy
+
+    {
+        public override void SendNotification()
+        {
+            Console.WriteLine(
+              "Called NotifyByAlertStrategy.SendNotification()");
+        }
+    }
+
+    /// <summary>
+
+    /// The 'Context' class
+
+    /// </summary>
+
+    class Context
+
+    {
+        private Strategy _strategy;
+
+        // Constructor
+
+        public Context(Strategy strategy)
+        {
+            this._strategy = strategy;
+        }
+
+        public void Execute()
+        {
+            _strategy.SendNotification();
+        }
+    }
     /// <summary>
 
     /// MainApp startup class for Structural
@@ -25,14 +104,14 @@ namespace StrategyDesignPattern
 
             // Three contexts following different strategies
 
-            context = new Context(new ConcreteStrategyA());
-            context.ContextInterface();
+            context = new Context(new NotifyByEmailStrategy());
+            context.Execute();
 
-            context = new Context(new ConcreteStrategyB());
-            context.ContextInterface();
+            context = new Context(new NotifyBySmsStrategy());
+            context.Execute();
 
-            context = new Context(new ConcreteStrategyC());
-            context.ContextInterface();
+            context = new Context(new NotifyByAlertStrategy());
+            context.Execute();
 
             // Wait for user
 
@@ -45,82 +124,4 @@ namespace StrategyDesignPattern
     /// The 'Strategy' abstract class
 
     /// </summary>
-
-    abstract class Strategy
-
-    {
-        public abstract void AlgorithmInterface();
-    }
-
-    /// <summary>
-
-    /// A 'ConcreteStrategy' class
-
-    /// </summary>
-
-    class ConcreteStrategyA : Strategy
-
-    {
-        public override void AlgorithmInterface()
-        {
-            Console.WriteLine(
-              "Called ConcreteStrategyA.AlgorithmInterface()");
-        }
-    }
-
-    /// <summary>
-
-    /// A 'ConcreteStrategy' class
-
-    /// </summary>
-
-    class ConcreteStrategyB : Strategy
-
-    {
-        public override void AlgorithmInterface()
-        {
-            Console.WriteLine(
-              "Called ConcreteStrategyB.AlgorithmInterface()");
-        }
-    }
-
-    /// <summary>
-
-    /// A 'ConcreteStrategy' class
-
-    /// </summary>
-
-    class ConcreteStrategyC : Strategy
-
-    {
-        public override void AlgorithmInterface()
-        {
-            Console.WriteLine(
-              "Called ConcreteStrategyC.AlgorithmInterface()");
-        }
-    }
-
-    /// <summary>
-
-    /// The 'Context' class
-
-    /// </summary>
-
-    class Context
-
-    {
-        private Strategy _strategy;
-
-        // Constructor
-
-        public Context(Strategy strategy)
-        {
-            this._strategy = strategy;
-        }
-
-        public void ContextInterface()
-        {
-            _strategy.AlgorithmInterface();
-        }
-    }
 }
