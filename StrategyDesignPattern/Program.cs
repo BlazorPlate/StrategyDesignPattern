@@ -2,8 +2,6 @@
 
 namespace StrategyDesignPattern
 {
-
-
     public interface Strategy
 
     {
@@ -60,9 +58,7 @@ namespace StrategyDesignPattern
     }
 
     public class Program
-
     {
-
         static void Main()
         {
             Context context;
@@ -77,8 +73,6 @@ namespace StrategyDesignPattern
 
             context = new Context(new NotifyByAlertStrategy());
             context.Execute();
-
-            // Wait for user
 
             Console.ReadKey();
         }
