@@ -8,34 +8,31 @@ namespace StrategyDesignPattern
         void SendNotification();
     }
 
-    public class NotifyByEmailStrategy : Strategy
+    public class EmailStrategy : Strategy
 
     {
         public void SendNotification()
         {
-            Console.WriteLine(
-              "Called NotifyByEmailStrategy.SendNotification()");
+            Console.WriteLine("Called EmailStrategy.SendNotification()");
         }
     }
 
 
-    public class NotifyBySmsStrategy : Strategy
+    public class SmsStrategy : Strategy
 
     {
         public void SendNotification()
         {
-            Console.WriteLine(
-              "Called NotifyBySmsStrategy.SendNotification()");
+            Console.WriteLine("Called SmsStrategy.SendNotification()");
         }
     }
 
-    public class NotifyByAlertStrategy : Strategy
+    public class AlertStrategy : Strategy
 
     {
         public void SendNotification()
         {
-            Console.WriteLine(
-              "Called NotifyByAlertStrategy.SendNotification()");
+            Console.WriteLine("Called AlertStrategy.SendNotification()");
         }
     }
 
@@ -65,13 +62,13 @@ namespace StrategyDesignPattern
 
             // Three contexts following different strategies
 
-            context = new Context(new NotifyByEmailStrategy());
+            context = new Context(new EmailStrategy());
             context.Execute();
 
-            context = new Context(new NotifyBySmsStrategy());
+            context = new Context(new SmsStrategy());
             context.Execute();
 
-            context = new Context(new NotifyByAlertStrategy());
+            context = new Context(new AlertStrategy());
             context.Execute();
 
             Console.ReadKey();
